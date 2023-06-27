@@ -23,6 +23,9 @@ def pascal_triangle(n):
         made up of sequences of the Pascal's Triangle
     """
 
+    if n <= 0:
+        return []
+
     arr = []
 
     for i in range(n):
