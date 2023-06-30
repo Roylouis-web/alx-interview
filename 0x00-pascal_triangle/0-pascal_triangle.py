@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def factorial(n):
     """
         Computes the factorial of a number
