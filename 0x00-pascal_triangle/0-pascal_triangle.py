@@ -1,38 +1,37 @@
 #!/usr/bin/python3
 
-def factorial(n):
-    """
-        Computes the factorial of a number
-    """
+# Python 3 code for Pascal's Triangle
+# A simple O(n^3)
+# program for
+# Pascal's Triangle
 
-    if n <= 0:
-        return 1
-    return n * factorial(n - 1)
-
-
-def binomial_sequence(a, b):
-    """
-        Computes the binomial sequence of
-        the Pascal's Triangle
-    """
-
-    return factorial(a) // (factorial(a - b) * factorial(b))
-
-
+# Function to print
+# first n lines of
+# Pascal's Triangle
 def pascal_triangle(n):
-    """
-        Returns a list of list which is
-        made up of sequences of the Pascal's Triangle
-    """
-
-    if n <= 0:
-        return []
 
     arr = []
 
-    for i in range(n):
+    # Iterate through every line
+    # and print entries in it
+    for line in range(0, n):
         temp = []
-        for j in range(i + 1):
-            temp.append(binomial_sequence(i, j))
+
+        # Every line has number of
+        # integers equal to line
+        # number
+        for i in range(0, line + 1):
+            temp.append(binomialCoeff(line, i))
         arr.append(temp)
     return arr
+
+
+def binomialCoeff(n, k):
+    res = 1
+    if (k > n - k):
+        k = n - k
+    for i in range(0, k):
+        res = res * (n - i)
+        res = res // (i + 1)
+
+    return res
