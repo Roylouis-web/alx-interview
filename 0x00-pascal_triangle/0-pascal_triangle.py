@@ -1,27 +1,42 @@
 #!/usr/bin/python3
-"""Pascal Triangle Interview Challenge"""
+
+"""
+    Module for a python program that computes the
+    binomial coefficients of the pascal's triangle
+    and returns the result as a list of lists
+"""
 
 
 def pascal_triangle(n):
-    """returns a list of lists of numbers
-    representing the pascal triangle"""
-    if n <= 0:
-        return []
+    """
+        A function named pascal_triangle that receives a parameter n
+        and returns a list of lists containing the n values of binomial
+        coefficients
+    """
 
-    pascal_triangle = [0] * n
+    final_array = []
+    compute_array = [0]
 
     for i in range(n):
-        # define a row and fill first and last idx with 1
-        new_row = [0] * (i+1)
-        new_row[0] = 1
-        new_row[len(new_row) - 1] = 1
+        temp_array = []
+        for j in range(i+1):
+            temp_array.append(binomial_coefficient(compute_array, i, j))
+        final_array.append(temp_array)
+    return final_array
 
-        for j in range(1, i):
-            if j > 0 and j < len(new_row):
-                a = pascal_triangle[i - 1][j]
-                b = pascal_triangle[i - 1][j - 1]
-                new_row[j] = a + b
 
-        pascal_triangle[i] = new_row
+def binomial_coefficient(compute_array, i, j):
+    """
+        A function named binomial_coeffiecient that accepts parameters:
+        compute_array: which stores value of the previous sequence
+        i: used as numerator to form the next sequence
+        j: used as a denominator in forming the next sequence
+        returns a binomial sequence
+    """
 
-    return pascal_triangle
+    if i == j or j == 0:
+        compute_array[0] = 1
+        return compute_array[0]
+    else:
+        compute_array[0] = compute_array[0] * ((i - j) + 1) // j
+    return compute_array[0]
