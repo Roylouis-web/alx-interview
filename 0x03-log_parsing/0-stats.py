@@ -21,8 +21,8 @@ status_code_count = [
     {'name': '500', 'count': 0}
 ]
 
-regex = r'''\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{6}\] "GET /projects/260 HTTP/1\.1" (200|301|400|401|403|404|405|500) \d{1,4}$
-'''
+regex = re.compile(r'''\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{6}\] "GET /projects/260 HTTP/1\.1" (200|301|400|401|403|404|405|500) \d{1,4}$
+''')
 try:
     for line in sys.stdin:
         if re.match(regex, line) is not None:
@@ -37,10 +37,12 @@ try:
         if count == 10:
             print(f'File size: {file_count}')
             for status in status_code_count:
-                print(f'{status["name"]}: {status["count"]}')
+                if status['count'] != 0:
+                    print(f'{status["name"]}: {status["count"]}')
             count = 0
         count += 1
 except KeyboardInterrupt:
     print(f'File size: {file_count}')
     for status in status_code_count:
-        print(f'{status["name"]}: {status["count"]}')
+        if status['count'] != 0:
+            print(f'{status["name"]}: {status["count"]}')
