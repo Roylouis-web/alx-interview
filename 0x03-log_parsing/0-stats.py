@@ -31,6 +31,8 @@ text = ''
 
 try:
     for line in sys.stdin:
+        if re.match(pattern, line) is None:
+            continue
         text = line
         if count == 10:
             print(f'File size: {file_count}')
