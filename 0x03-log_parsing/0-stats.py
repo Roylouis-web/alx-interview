@@ -31,21 +31,19 @@ pattern = ' '.join(regex)
 try:
     for line in sys.stdin:
         if re.match(pattern, line) is not None:
+            if count == 10:
+                print(f'File size: {file_count}')
+                for status in status_code_count:
+                    if status['count'] != 0:
+                        print(f'{status["name"]}: {status["count"]}')
+                count = 0
             t = re.findall(r"(?<!1\.1) \d{3} \d{1,4}", line)
             status_code, file_size = t[0].split()
-            if count != 10:
-                file_count += int(file_size)
-
-            if status_code and status_code.isdigit() and count != 10:
+            file_count += int(file_size)
+            if status_code and status_code.isdigit():
                 for status in status_code_count:
                     if status['name'] == status_code:
                         status['count'] += 1
-        if count == 10:
-            print(f'File size: {file_count}')
-            for status in status_code_count:
-                if status['count'] != 0:
-                    print(f'{status["name"]}: {status["count"]}')
-            count = 0
         count += 1
 except KeyboardInterrupt:
     print(f'File size: {file_count}')
