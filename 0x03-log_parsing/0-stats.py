@@ -46,6 +46,8 @@ try:
                 for status in status_code_count:
                     if status['name'] == status_code:
                         status['count'] += 1
+        else:
+            continue
         count += 1
 except KeyboardInterrupt:
     print(f'File size: {file_count}')
