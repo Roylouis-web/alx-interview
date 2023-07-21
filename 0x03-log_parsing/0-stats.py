@@ -54,10 +54,8 @@ except KeyboardInterrupt:
         if status['count'] != 0:
             print(f'{status["name"]}: {status["count"]}')
 
-if count == 1:
+if not text or count > 0:
     print(f'File size: {file_count}')
     for status in status_code_count:
         if status['count'] != 0:
             print(f'{status["name"]}: {status["count"]}')
-if not text:
-    print(f'File size: {file_count}')
