@@ -53,7 +53,7 @@ except KeyboardInterrupt:
         if status['count'] != 0:
             print(f'{status["name"]}: {status["count"]}')
 
-if not text or count > 0:
+if not text or count > 0 or re.match(pattern, text) is None:
     print(f'File size: {file_count}')
     for status in status_code_count:
         if status['count'] != 0:
