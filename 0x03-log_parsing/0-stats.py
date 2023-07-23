@@ -32,7 +32,7 @@ text = ''
 try:
     for line in sys.stdin:
         text = line
-        if re.match(pattern, line) is not None:
+        if len(line.split()) == 9:
             if count == 10:
                 print(f'File size: {file_count}')
                 for status in status_code_count:
