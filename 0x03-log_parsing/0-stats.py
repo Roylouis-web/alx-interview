@@ -32,13 +32,13 @@ text = ''
 try:
     for line in sys.stdin:
         text = line
-        if len(line.split()) == 9:
-            if count == 10:
-                print(f'File size: {file_count}')
-                for status in status_code_count:
-                    if (status['count'] != 0):
-                        print(f'{status["name"]}: {status["count"]}')
-                count = 0
+        if count == 10:
+            print(f'File size: {file_count}')
+            for status in status_code_count:
+                if (status['count'] != 0):
+                    print(f'{status["name"]}: {status["count"]}')
+            count = 0
+        if re.match(pattern, line) is not None:
             t = re.findall(r"(?<!1\.1) \d{3} \d{1,4}", line)
             status_code, file_size = t[0].split()
             file_count += int(file_size)
@@ -46,8 +46,6 @@ try:
                 for status in status_code_count:
                     if status['name'] == status_code:
                         status['count'] += 1
-        else:
-            continue
         count += 1
 except KeyboardInterrupt:
     print(f'File size: {file_count}')
@@ -55,8 +53,7 @@ except KeyboardInterrupt:
         if status['count'] != 0:
             print(f'{status["name"]}: {status["count"]}')
 
-if not text or count > 0 or re.match(pattern, text) is None:
-    print(f'File size: {file_count}')
-    for status in status_code_count:
-        if status['count'] != 0:
-            print(f'{status["name"]}: {status["count"]}')
+print(f'File size: {file_count}')
+for status in status_code_count:
+    if status['count'] != 0:
+        print(f'{status["name"]}: {status["count"]}')
