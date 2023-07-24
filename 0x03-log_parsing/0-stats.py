@@ -24,13 +24,6 @@ status_codes = [
         '200', '301', '400', '401',
         '403', '404', '405', '500'
 ]
-regex = [
-        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}',
-        r'- \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\]',
-        r'"GET /projects/260 HTTP/1\.1"',
-        r'(200|301|400|401|403|404|405|500) \d{1,4}$',
-]
-pattern = ' '.join(regex)
 
 try:
     for line in sys.stdin:
@@ -42,7 +35,7 @@ try:
                     print(f'{status["name"]}: {status["count"]}')
             count = 0
             status_code, file_size = None, None
-        if len(t) >= 9:
+        if len(t) >= 8:
             status_code, file_size = t[7], t[8]
         file_count += int(file_size)
 
