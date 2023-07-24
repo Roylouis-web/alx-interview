@@ -44,7 +44,6 @@ try:
                             file_size = t[i + 1]
                 elif t[i].isdigit():
                     file_size = t[i]
-
         file_count += int(file_size)
 
         if status_code in status_codes:
