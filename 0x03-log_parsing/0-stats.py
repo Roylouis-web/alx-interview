@@ -37,8 +37,9 @@ try:
             count = 0
 
         t = line.split()
-        status_code, file_size = t[7], t[8]
-        file_count += int(file_size)
+        if len(t) >= 9:
+            status_code, file_size = t[7], t[8]
+            file_count += int(file_size)
         if (
                 status_code and status_code.isdigit()
                 and status_code in allowed_status_codes
