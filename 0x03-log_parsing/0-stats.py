@@ -46,9 +46,8 @@ try:
                             file_size = t[i + 1]
                 elif t[i].isdigit():
                     file_size = t[i]
-        file_count += int(file_size)
 
-        print(status_code, file_size)
+        file_count += int(file_size)
 
         for status in status_code_count:
             if status['name'] == status_code:
