@@ -45,10 +45,8 @@ try:
         if len(t) >= 9:
             status_code, file_size = t[7], t[8]
         file_count += int(file_size)
-        if (
-            status_code and status_code.isdigit()
-            and status_code in status_codes
-           ):
+
+        if status_code.isdigit() and status_code in status_codes:
             for status in status_code_count:
                 if status['name'] == status_code:
                     status['count'] += 1
