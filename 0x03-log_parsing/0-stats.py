@@ -35,7 +35,6 @@ try:
                     print(f'{status["name"]}: {status["count"]}')
             count = 0
         status_code, file_size = 0, 0
-        print(t)
         if len(t) >= 2:
             for i in range(len(t)):
                 if t[i] in status_codes:
