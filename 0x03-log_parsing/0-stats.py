@@ -20,22 +20,34 @@ status_code_count = [
     {'name': '405', 'count': 0},
     {'name': '500', 'count': 0}
 ]
+status_codes = [
+        '200', '301', '400', '401',
+        '403', '404', '405', '500'
+]
 
 try:
     for line in sys.stdin:
-            if count == 10:
-                print(f'File size: {file_count}')
-                for status in status_code_count:
-                    if status['count'] != 0:
-                        print(f'{status["name"]}: {status["count"]}')
-                count = 0
-            t = re.findall(r"(?<!1\.1) \d{3} \d{1,4}", line)
-            status_code, file_size = t[0].split()
-            file_count += int(file_size)
-            if status_code and status_code.isdigit():
-                for status in status_code_count:
-                    if status['name'] == status_code:
-                        status['count'] += 1
+        t = line.split()
+        if count == 10:
+            print(f'File size: {file_count}')
+            for status in status_code_count:
+                if status['count'] != 0:
+                    print(f'{status["name"]}: {status["count"]}')
+            count = 0
+
+        status_code, file_size = None, None
+        if len(t) >= 1:
+            for i in t:
+                if i in status_codes:
+                    status_code = i
+                elif i.isdigit():
+                    file_size = int(i)
+        if file_size:
+            file_count += file_size
+        if status_code and status_code.isdigit():
+            for status in status_code_count:
+                if status['name'] == status_code:
+                    status['count'] += 1
         count += 1
 except KeyboardInterrupt:
     pass
