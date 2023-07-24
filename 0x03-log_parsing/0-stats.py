@@ -34,7 +34,9 @@ try:
                 if status['count'] != 0:
                     print(f'{status["name"]}: {status["count"]}')
             count = 0
-        status_code, file_size = 0, 0
+        status_code = None
+        file_size = None
+
         if len(t) >= 2:
             for i in range(len(t)):
                 if t[i] in status_codes:
@@ -46,10 +48,11 @@ try:
                     file_size = t[i]
         file_count += int(file_size)
 
-        if status_code in status_codes:
-            for status in status_code_count:
-                if status['name'] == status_code:
-                    status['count'] += 1
+        print(status_code, file_size)
+
+        for status in status_code_count:
+            if status['name'] == status_code:
+                status['count'] += 1
         count += 1
 except KeyboardInterrupt:
     pass
