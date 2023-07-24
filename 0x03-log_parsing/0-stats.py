@@ -37,6 +37,8 @@ try:
             count = 0
 
         t = line.split()
+        status_code = 0
+        file_size = 0
         if len(t) >= 9:
             status_code, file_size = t[7], t[8]
             file_count += int(file_size)
