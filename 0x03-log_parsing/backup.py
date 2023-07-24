@@ -27,7 +27,6 @@ regex = [
         r'(200|301|400|401|403|404|405|500) \d{1,4}$',
 ]
 pattern = ' '.join(regex)
-text = ''
 
 try:
     for line in sys.stdin:
@@ -48,15 +47,9 @@ try:
                         status['count'] += 1
         count += 1
 except KeyboardInterrupt:
-    print(f'File size: {file_count}')
-    for status in status_code_count:
-        if status['count'] != 0:
-            print(f'{status["name"]}: {status["count"]}')
+    pass
 
-if count == 1:
-    print(f'File size: {file_count}')
-    for status in status_code_count:
-        if status['count'] != 0:
-            print(f'{status["name"]}: {status["count"]}')
-if not text:
-    print(f'File size: {file_count}')
+print(f'File size: {file_count}')
+for status in status_code_count:
+    if status['count'] != 0:
+        print(f'{status["name"]}: {status["count"]}')
