@@ -20,7 +20,7 @@ status_code_count = [
     {'name': '405', 'count': 0},
     {'name': '500', 'count': 0}
 ]
-status_codes = [
+sc = [
         '200', '301', '400', '401',
         '403', '404', '405', '500'
 ]
@@ -37,11 +37,11 @@ try:
 
         status_code, file_size = None, None
         if len(t) >= 1:
-            for i in t:
-                if i in status_codes:
-                    status_code = i
-                elif i.isdigit():
-                    file_size = int(i)
+            for i in range(len(t)):
+                if t[i] in sc and t[i - 1] not in sc:
+                    status_code = t[i]
+                elif t[i].isdigit():
+                    file_size = int(t[i])
         if file_size:
             file_count += file_size
         if status_code and status_code.isdigit():
