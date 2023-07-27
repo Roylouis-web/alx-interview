@@ -5,17 +5,17 @@
 """
 
 
-def convert_to_binary(num):
+def check(num):
     """
-        convert a decimal to its binary equivalent
+        checks for a valid byte
     """
 
-    result = ""
-
-    while num != 0:
-        result += str(num % 2)
-        num = num // 2
-    return result[::1]
+    mask = 1 << (8 - 1)
+    i = 0
+    while num & mask:
+        mask >>= 1
+        i += 1
+    return i
 
 
 def validUTF8(data):
@@ -24,9 +24,17 @@ def validUTF8(data):
         valid UTF-8
     """
 
-    for value in data:
-        if value > 255:
+    i = 0
+    while i < len(data):
+        j = check(data[i])
+        k = i + j - (j != 0)
+        i += 1
+
+        if j == 1 or j > 4 or k > len(data):
             return False
-        elif len(convert_to_binary(value)) > 8:
-            return False
+        while i < len(data) and i <= k:
+            cur = check(data[i])
+            if cur != 1:
+                return False
+            i += 1
     return True
