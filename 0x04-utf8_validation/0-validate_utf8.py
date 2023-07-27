@@ -15,7 +15,7 @@ def validUTF8(data):
         value = data[i]
         num_of_bytes = 0
 
-        if value >= 255:
+        if value > 255:
             return False
         elif value & 128 == 0:
             num_of_bytes = 1
@@ -31,7 +31,7 @@ def validUTF8(data):
         for j in range(1, num_of_bytes):
             if j + 1 > len(data):
                 return False
-            elif data[i + j] & 192 != 1:
+            elif data[i + j] & 192 != 128:
                 return False
         i = i + num_of_bytes - 1
     return True
