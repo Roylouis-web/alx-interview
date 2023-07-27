@@ -29,7 +29,7 @@ def validUTF8(data):
             return False
 
         for j in range(1, num_of_bytes):
-            if j + 1 > len(data):
+            if j + 1 >= len(data):
                 return False
             elif data[i + j] & 192 != 128:
                 return False
