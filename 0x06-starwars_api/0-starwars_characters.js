@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const process = require('process');
 const request = require('request');
 const arg = process.argv[2];
