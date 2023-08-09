@@ -4,7 +4,7 @@ const process = require('process');
 const request = require('request');
 const arg = process.argv[2];
 
-const printCharacters = function lexicalPrintCharacters () {
+const printCharacters = () => {
   request(`https://swapi-api.alx-tools.com/api/films/${arg}`, async (error, response, body) => {
     if (error) {
       console.log(error);
@@ -18,7 +18,7 @@ const printCharacters = function lexicalPrintCharacters () {
   });
 };
 
-const printACharacter = function lexicalPrintACharacter (url) {
+const printACharacter = (url) => {
   return new Promise((resolve, reject) => {
     request(url, (error, response, body) => {
       if (error) {
@@ -29,4 +29,6 @@ const printACharacter = function lexicalPrintACharacter (url) {
   });
 };
 
-printCharacters();
+if (process.argv.length > 2) {
+  printCharacters();
+}
