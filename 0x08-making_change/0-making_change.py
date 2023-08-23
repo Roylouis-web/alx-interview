@@ -11,6 +11,8 @@ def makeChange(coins, total):
 
     if total <= 0:
         return 0
+    if not coins:
+        return -1
     if any([coin == total for coin in coins]):
         return 1
     n = max(coins)
