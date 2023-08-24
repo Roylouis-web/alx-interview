@@ -9,7 +9,7 @@ def makeChange(coins, total):
         Calculates the fewest steps to get a total
     """
 
-    if total <= 0 or type(total) !== int:
+    if total <= 0:
         return 0
     if not coins or type(coins) != list:
         return -1
