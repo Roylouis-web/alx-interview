@@ -13,7 +13,7 @@ def makeChange(coins, total):
         return 0
     if not coins or type(coins) != list:
         return -1
-    if any([coin == 0 for coin in coins]):
+    if any([coin == 0 or type(coin) != int for coin in coins]):
         return -1
     if any([coin == total for coin in coins]):
         return 1
