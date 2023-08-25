@@ -32,8 +32,8 @@ def makeChange(coins, total):
             (total - n) % coin == 0 and
             (total - n) >= coin and
             total >= n) or
-            (((total - n) + 1) % coin == 0
-             and (total - n) >= coin and total >= n) for coin in unchecked
+            (((total - n) + 1) % coin == 0 and (total - n) >=
+                coin and total >= n) for coin in unchecked
              ])):
             total -= n
             count += 1
