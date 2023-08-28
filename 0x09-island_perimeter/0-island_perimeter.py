@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+"""
+    Module for a function called island_perimeter
+"""
+
+
+def island_perimeter(grid):
+    """
+        A function that returns the perimeter
+        of the island described in grid
+    """
+
+    count = 0
+    result = None
+    for i in grid:
+        for j in i:
+            if j == 1:
+                count += 1
+    result = (4 * count) - ((count * 2) - 2)
+    return result
