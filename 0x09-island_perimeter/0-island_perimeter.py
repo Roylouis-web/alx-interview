@@ -9,7 +9,7 @@ def island_perimeter(grid):
         A function that returns the perimeter
         of the island described in grid
     """
-    
+ 
     if len(grid) > 100:
         return 0
     if any([len(g) > 100 for g in grid]):
@@ -22,4 +22,6 @@ def island_perimeter(grid):
                 count += 1
     if count:
         result = (4 * count) - ((count * 2) - 2)
+    else:
+        result = count
     return result
