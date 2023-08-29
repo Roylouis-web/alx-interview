@@ -13,6 +13,9 @@ def island_perimeter(grid):
     right = []
     left = []
 
+    if not grid:
+        return 0
+
     if len(grid) > 100:
         return 0
     if any([len(g) > 100 for g in grid]):
@@ -31,5 +34,5 @@ def island_perimeter(grid):
     if count:
         result = (4 * count) - ((count * 2) - 2)
     else:
-        result = 0
+        result = count
     return result
