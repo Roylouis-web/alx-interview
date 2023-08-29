@@ -13,12 +13,12 @@ def island_perimeter(grid):
     right = []
     left = []
 
-    if not grid:
+    if not grid or type(grid) != list:
         return 0
 
     if len(grid) > 100:
         return 0
-    if any([len(g) > 100 for g in grid]):
+    if any([len(g) > 100 or type(g) != list for g in grid]):
         return 0
     count = 0
     result = None
