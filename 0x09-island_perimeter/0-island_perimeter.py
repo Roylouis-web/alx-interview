@@ -9,7 +9,11 @@ def island_perimeter(grid):
         A function that returns the perimeter
         of the island described in grid
     """
-
+    
+    if len(grid) > 100:
+        return None
+    if any([len(g) > 100 for g in grid]):
+        return None
     count = 0
     result = None
     for i in grid:
