@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Module for a function called island_perimeter
+    Module for a function named island_perimeter
 """
 
 
