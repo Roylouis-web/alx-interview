@@ -12,18 +12,9 @@ def island_perimeter(grid):
 
     right = []
     left = []
-
-    if not grid or type(grid) != list:
-        return 0
-    for i in grid:
-        if type(i) != list:
-            return 0
-        for j in i:
-            if type(j) != int:
-                return 0
-
     count = 0
     result = None
+
     for i in grid:
         for j in i:
             if j == 1:
