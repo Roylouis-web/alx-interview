@@ -5,6 +5,14 @@
 
 
 def island_perimeter(grid):
+    """
+        params:
+            - grid: A list of lists
+        Return:
+            The perimeter of the island describe in
+            the list of lists
+    """
+
     initial = 0
     count = 0
 
@@ -15,45 +23,17 @@ def island_perimeter(grid):
 
     if initial == 1:
         return 4
+
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             if grid[i][j] == 1:
-                if j + 1 < len(grid[i]) and j - 1 >= 0:
-                    if grid[i][j + 1] == 1:
-                        count += 1
-                    elif grid[i][j - 1] == 1:
-                        count += 1
-                    elif i + 1 < len(grid):
-                        if grid[i + 1][j] == 1:
-                            count += 1
-                        else:
-                            return 0
-                    else:
-                        return 0
-                elif j - 1 < 0 and j + 1 < len(grid[i]):
-                    if grid[i][j + 1] == 1:
-                        count += 1
-                    elif i + 1 < len(grid):
-                        if grid[i + 1][j] == 1:
-                            count += 1
-                        else:
-                            return 0
-                    else:
-                        return 0
-                elif not j + 1 < len(grid[i]) and not j - 1 >= 0:
-                    if i + 1 < len(grid):
-                        if grid[i + 1][j] == 1:
-                            count += 1
-                        else:
-                            count += 1
-                elif not j + 1 < len(grid[i]) and j - 1 >= 0:
+                if j - 1 >= 0 and j + 1 < len(grid[i]) and i + 1 < len(grid):
                     if grid[i][j - 1] == 1:
                         count += 1
-                    elif i + 1 < len(grid):
-                        if grid[i + 1][j] == 1:
-                            count += 1
-                        else:
-                            return 0
+                    elif grid[i][j + 1] == 1:
+                        count += 1
+                    elif grid[i + 1][j] == 1:
+                        count += 1
                     elif i - 1 >= 0:
                         if grid[i - 1][j] == 1:
                             count += 1
@@ -61,8 +41,78 @@ def island_perimeter(grid):
                             return 0
                     else:
                         return 0
-                else:
-                    return 0
+                elif (not j - 1 >= 0 and
+                      j + 1 < len(grid[i]) and i + 1 < len(grid)):
+                    if grid[i][j + 1] == 1:
+                        count += 1
+                    elif grid[i + 1][j] == 1:
+                        count += 1
+                    elif i - 1 >= 0:
+                        if grid[i - 1][j] == 1:
+                            count += 1
+                        else:
+                            return 0
+                    else:
+                        return 0
+                elif (j - 1 >= 0 and not
+                      j + 1 < len(grid[i]) and i + 1 < len(grid)):
+                    if grid[i][j - 1] == 1:
+                        count += 1
+                    elif grid[i + 1][j] == 1:
+                        count += 1
+                    elif i - 1 >= 0:
+                        if grid[i - 1][j] == 1:
+                            count += 1
+                        else:
+                            return 0
+                    else:
+                        return 0
+                elif (j - 1 >= 0 and
+                      j + 1 < len(grid[i]) and not i + 1 < len(grid)):
+                    if grid[i][j + 1] == 1:
+                        count += 1
+                    elif grid[i][j - 1] == 1:
+                        count += 1
+                    elif i - 1 >= 0:
+                        if grid[i - 1][j] == 1:
+                            count += 1
+                        else:
+                            return 0
+                    else:
+                        return 0
+                elif (j - 1 >= 0 and not
+                      j + 1 < len(grid[i]) and not i + 1 < len(grid)):
+                    if grid[i][j - 1] == 1:
+                        count += 1
+                    elif i - 1 >= 0:
+                        if grid[i - 1][j] == 1:
+                            count += 1
+                        else:
+                            return 0
+                    else:
+                        return 0
+                elif (not j - 1 >= 0 and
+                      j + 1 < len(grid[i]) and not i + 1 < len(grid)):
+                    if grid[i][j + 1] == 1:
+                        count += 1
+                    elif i - 1 >= 0:
+                        if grid[i - 1][j] == 1:
+                            count += 1
+                        else:
+                            return 0
+                    else:
+                        return 0
+                elif (not j - 1 >= 0 and not
+                      j + 1 < len(grid[i]) and i + 1 < len(grid)):
+                    if grid[i + 1][j] == 1:
+                        count += 1
+                    elif i - 1 >= 0:
+                        if grid[i - 1][j] == 1:
+                            count += 1
+                        else:
+                            return 0
+                    else:
+                        return 0
 
     if count:
         result = (4 * count) - ((count * 2) - 2)
