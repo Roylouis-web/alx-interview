@@ -31,11 +31,11 @@ def isWinner(x, nums):
     benPoints = 0
     previous = []
 
-    if x == 0:
+    if type(x) != int or type(nums) != list:
         return None
-    if x > len(nums) or len(nums) > x or type(x) != int or not nums:
+    if x > len(nums) or len(nums) > x or not nums:
         return None
-    if any([type(x) != int for x in nums]) or type(nums) != list:
+    if any([type(x) != int for x in nums]):
         return None
 
     for round in range(0, x):
