@@ -33,8 +33,9 @@ def isWinner(x, nums):
 
     if x > len(nums) or len(nums) > x or type(x) != int or not nums:
         return None
-    if any([type(x) != int for x in nums]) or type(nums) != list:
+    if any([type(x) != int for x in nums]) or type(nums) != list or x == 0:
         return None
+
     for round in range(0, x):
         moves = 0
         while True:
