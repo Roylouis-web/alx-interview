@@ -30,7 +30,7 @@ def isWinner(x, nums):
     mariaPoints = 0
     benPoints = 0
     previous = []
-    
+ 
     if x > len(nums) or len(nums) > x or type(x) != int or not nums:
         return None
     if any([type(x) != int for x in nums]):
