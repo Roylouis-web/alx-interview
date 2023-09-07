@@ -30,7 +30,9 @@ def isWinner(x, nums):
     mariaPoints = 0
     benPoints = 0
     previous = []
-
+    
+    if x > len(nums) or len(nums) > x:
+        return None
     if not nums:
         return None
     for round in range(0, x):
